@@ -7,7 +7,7 @@ A simple web application featuring a dancing ASCII bear. The bear starts dancing
 - **Stack:** Vanilla HTML/CSS/JS — single `index.html`, no dependencies, no build step
 - **Bear design:** 4-frame ASCII animation sourced from [node-dancing-bear](https://github.com/joeyism/node-dancing-bear)
 - **Bear color:** Yellow (`#FFD700`) on a dark background
-- **Frame rate:** 300ms per frame (~3.3 fps)
+- **Frame rate:** 150ms per frame (~6.7 fps)
 - **Deployment:** Local only (open `index.html` directly in a browser)
 
 ## Usage
@@ -27,3 +27,6 @@ Just open `index.html` in any browser. No server or install needed.
 ### Outstanding
 
 - [ ] Tune frame rate (currently 300ms — consider faster animation)
+- [ ] Add responsive design for mobile devices
+- [ ] Make the bear green instead of yellow
+
