@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dancing Bear</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+    }
+
+    pre {
+      color: #FFD700;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 18px;
+      line-height: 1.4;
+      white-space: pre;
+    }
+
+    button {
+      margin-top: 32px;
+      padding: 12px 40px;
+      font-size: 18px;
+      background: #FFD700;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: opacity 0.15s;
+    }
+
+    button:hover { opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <pre id="bear"></pre>
+  <button id="toggle">Stop</button>
+
+  <script>
+    const frames = [
+`    _--_     _--_
+   (    )~~~(    )
+    \\           /
+     (  ' _ \`  )
+      \\       /
+    .__( \`-' )
+   / !  \`---' \\
+  /  \\         !
+ !   /\\        )
+ !   !_\\       ).
+  \\    \\       ! \\
+   \\___/   )  /__/
+     \\    /   !
+     /   !   /
+    !   /__ /___
+    (______)____)    `,
+
+`   _--_     _--_
+  (    )~~~(    )
+   \\           /
+    (  ' _ \`  )
+     \\       /
+      ( \`-' )
+   _--'\`---_
+  /         \\___
+ /   /       !  \\
+(   <        !__/
+ \\   \\      /\\
+  \\--/   \\ /  \\  ._
+    \\\`.    )-   \\/  )
+     !   !  \`.    /
+     /  /__   \\__/
+    (______)         `,
+
+`   _--_     _--_
+  (    )~~~(    )
+   \\           /
+    (  ' _ \`  )
+     \\       /
+      ( \`-' )
+    .--\`---'\\
+   /        _>\\
+  /  /-___-'   )
+/\\'  (        _/
+\\___/\`------' )
+     \\      \`<
+   ___>-_     \\   /-\\
+  /      \`-_   \`-/  /
+ (  \\---__/ \`-_    /
+  \\__)         \`-_/   `,
+
+`    _--_     _--_
+   (    )~~~(    )
+    \\           /
+     (  ' _ \`  )
+      \\       /
+    .__( \`-' )  ___
+   /   /\`---'\`-'   \\
+  /   /          ._/   __
+/\\'   /.-----\\___/     /  )
+\\___//          \`----'   !
+     \\            ______/
+      \`--_____----'
+        \\    /
+        !   !
+        /  /__
+       (______)           `
+    ];
+
+    let idx = 0;
+    let timer = null;
+    const bearEl = document.getElementById('bear');
+    const btn = document.getElementById('toggle');
+
+    function step() {
+      bearEl.textContent = frames[idx];
+      idx = (idx + 1) % frames.length;
+    }
+
+    function startDancing() {
+      step();
+      timer = setInterval(step, 300);
+      btn.textContent = 'Stop';
+    }
+
+    function stopDancing() {
+      clearInterval(timer);
+      timer = null;
+      btn.textContent = 'Start';
+    }
+
+    btn.addEventListener('click', () => timer ? stopDancing() : startDancing());
+
+    // Auto-start
+    startDancing();
+  </script>
+</body>
+</html>
